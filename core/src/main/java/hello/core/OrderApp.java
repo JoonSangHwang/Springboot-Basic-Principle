@@ -14,8 +14,9 @@ public class OrderApp {
      * 애플리케이션 로직으로 이렇게 테스트 하는 것은 좋은 방법이 아니다. JUnit 테스트를 사용하자.
      */
     public static void main(String[] args) {
-        MemberService memberService = new MemberServiceImpl();
-        OrderService orderService = new OrderServiceImpl();
+        AppConfig appConfig = new AppConfig();
+        MemberService memberService = appConfig.memberService();
+        OrderService orderService = appConfig.orderService();
 
         long memberId = 1L;
 
@@ -26,7 +27,7 @@ public class OrderApp {
         memberService.join(member);
 
         // 주문 생성
-        Order order = orderService.createOrder(memberId, "itemA", 10000);
+        Order order = orderService.createOrder(memberId, "itemA", 20000);
 
         // [로그] 주문
         System.out.println("order = " + order);         // order = Order{memberId=1, itemName='itemA', itemPrice=10000, discountPrice=1000}
