@@ -14,6 +14,10 @@ import org.springframework.context.annotation.Configuration;
 /**
  * IoC 컨테이너 또는 DI 컨테이너
  * Application 의 실제 동작에 필요한 구현 객체를 생성한다.
+ *
+ * @Configuration
+ * - 스프링 컨테이너는 @Configuration 이 붙은 AppConfig 를 설정(구성) 정보로 사용한다.
+ * - 여기서 @Bean 이라 적힌 메서드를 모두 호출해서 반환된 객체를 스프링 컨테이너에 등록한다. 이렇게 스프링 컨테이너에 등록된 객체를 스프링 빈이라 한다
  */
 @Configuration
 public class AppConfig {
@@ -28,6 +32,11 @@ public class AppConfig {
         return new MemberServiceImpl(memoryMemberRepository());
     }
 
+    /**
+     * 스프링 빈은 @Bean 이 붙은 메서드의 명을 스프링 빈의 이름으로 사용한다. ( memberService , orderService )
+     * 스프링 빈은 applicationContext.getBean() 메서드를 사용해서 찾을 수 있다.
+     * 물론 Bean 이름 변경도 가능하다. @Bean(name= "변경") 하지만 관례상 그렇게 하지는 않는다.
+     */
     @Bean
     public MemoryMemberRepository memoryMemberRepository() {
         return new MemoryMemberRepository();
@@ -39,7 +48,7 @@ public class AppConfig {
     }
 
     @Bean
-    private DiscountPolicy discountPolicy() {
+    public DiscountPolicy discountPolicy() {
         /**
          * OCP
          * 소프트웨어 요소는 확장에는 열려 있으나 변경에는 닫혀 있어야 한다.

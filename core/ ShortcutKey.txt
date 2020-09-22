@@ -1,8 +1,9 @@
-Alt + Ins   : 디렉터리, 패키지, 클래스 등 생성 목록 보기
-Alt + Ins   : Generate
-Alt + Enter : Show Context Actions
-Ctrl + Shift + T : Test Class 생성
+Alt + Ins               : 디렉터리, 패키지, 클래스 등 생성 목록 보기
+Alt + Ins               : Generate
+Alt + Enter             : Show Context Actions
+Ctrl + Shift + T        : Test Class 생성
+Ctrl + Shift + Enter    : Code Complete
 
 
 # 참고
-psvm        : public static void main
+psvm                    : public static void main
